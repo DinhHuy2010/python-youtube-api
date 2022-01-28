@@ -1,0 +1,3 @@
+viewCount
+subscriberCount
+videoCount
