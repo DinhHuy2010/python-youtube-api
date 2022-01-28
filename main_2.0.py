@@ -1,8 +1,17 @@
 import requests
 
+view = 0
+subs = 0
+videos = 0
 api_key = "AIzaSyDKNpULheImRxpFuhLV-QgwIiHBUhSOl4s"
 base_url = "https://www.googleapis.com/youtube/v3/channels"
-channel_ids = ["UCmSp4bDxS9R0jpeZEvkut2g", "UCFAiFyGs6oDiF1Nf-rRJpZA"]
+channel_ids = []
+f_name = "example.txt" # Change this name if you rename the file. The file store channel channel ids on the YouTube.
+with open(f_name, "r") as f:
+    for i in f.readlines():
+        clean = i.rstrip("\n")
+        channel_ids.append(clean) # Get channel id
+
 total = {}
 for channel_id in channel_ids:
     url = f"{base_url}?key={api_key}&part=snippet,statistics&id={channel_id}"
@@ -26,5 +35,18 @@ for channel_id in channel_ids:
         "total_of_videos": total_of_videos
         }
 
+print("Channel name:")
 for channel in total:
-    print(channel + ":", total[channel])
+    print(channel)
+    datas = total[channel]
+    view += int(datas["total_of_views"])
+    subs += int(datas["total_of_subscribers"])
+    videos += int(datas["total_of_videos"])
+
+print(f"Total of {len(total)} channels views: {view}")
+print(f"Total of {len(total)} channels subscribers: {subs}")
+print(f"Total of {len(total)} channels videos: {videos}")
+print("#" * 40)
+print(f"Total of {len(total)} channels average views: {round(view / len(total))}")
+print(f"Total of {len(total)} channels average subscribers: {round(subs / len(total))}")
+print(f"Total of {len(total)} channels average videos: {round(videos / len(total))}")
