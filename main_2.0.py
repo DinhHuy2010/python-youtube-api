@@ -3,7 +3,7 @@ import requests
 view = 0
 subs = 0
 videos = 0
-api_key = "AIzaSyDKNpULheImRxpFuhLV-QgwIiHBUhSOl4s"
+api_key = "YOUR_KEY_NERD" # YouTube API key
 base_url = "https://www.googleapis.com/youtube/v3/channels"
 channel_ids = []
 f_name = "example.txt" # Change this name if you rename the file. The file store channel channel ids on the YouTube.
