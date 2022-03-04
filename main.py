@@ -1,7 +1,7 @@
 import requests
 
 channel_id = "UCmSp4bDxS9R0jpeZEvkut2g"
-api_key = "YOUR_KEY_NERD" # YouTube API key pls
+api_key = "YOUR_KEY_NERD"
 base_url = "https://www.googleapis.com/youtube/v3/channels"
 url = f"{base_url}?key={api_key}&part=snippet,statistics&id={channel_id}"
 request_url = requests.get(url)
